@@ -923,39 +923,86 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-
-    .hero-left {
-      height: 400px;
-    }
-
-    .hero-right {
-      padding: 60px 36px;
-    }
-
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { height: 420px; }
+    .hero-right { padding: 60px 36px 60px; }
     .hero-right::before { display: none; }
+    .hero-photo-container { width: 240px; }
 
-    .hero-photo-container {
-      width: 260px;
-    }
+    .values-section, .volunteer-section, .mira-section,
+    .bio-section, .credentials-section { padding: 72px 28px; }
 
-    .values-grid,
-    .mira-pillars,
-    .bio-grid,
-    .volunteer-grid {
-      grid-template-columns: 1fr;
-    }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .mira-pillars { grid-template-columns: 1fr 1fr; }
 
-    .footer-top {
-      grid-template-columns: 1fr;
-    }
-
+    .bio-grid { grid-template-columns: 1fr; gap: 40px; }
     .bio-sidebar {
       position: static;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
     }
+    .bio-stat { padding: 20px 16px; border-bottom: none; border-right: 1px solid #eee; text-align: center; }
+    .bio-stat:first-child { border-top: 1px solid #eee; }
+    .bio-stat:last-child { border-right: none; }
+
+    .volunteer-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-left { height: 360px; }
+    .hero-right { padding: 48px 24px 56px; }
+    .hero-photo-container { width: 200px; }
+    .hero-title { font-size: 16px; }
+    .hero-tagline { font-size: 18px; }
+    .flags-row { flex-wrap: wrap; gap: 10px; }
+    .hero-cta { flex-direction: column; }
+    .hero-cta .btn-primary, .hero-cta .btn-secondary { width: 100%; text-align: center; }
+
+    .values-section, .volunteer-section, .mira-section,
+    .bio-section, .credentials-section { padding: 60px 20px; }
+
+    .values-grid { grid-template-columns: 1fr; }
+    .value-card { padding: 36px 24px; }
+    .mira-pillars { grid-template-columns: 1fr 1fr; }
+
+    .bio-sidebar { grid-template-columns: 1fr 1fr; }
+    .bio-stat:nth-child(2) { border-right: none; }
+    .bio-stat:nth-child(3) { border-top: 1px solid #eee; }
+
+    .un-detail-list li { grid-template-columns: 80px 1fr; gap: 12px; }
+
+    .footer { padding: 60px 24px 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; align-items: center; gap: 14px; }
+
+    .cred-item { max-width: 100%; width: 100%; }
+    .cred-scroll { flex-direction: column; align-items: stretch; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-left { height: 300px; }
+    .hero-photo-container { width: 170px; }
+    .hero-name { font-size: 32px; }
+    .mira-pillars { grid-template-columns: 1fr; }
+    .bio-sidebar { grid-template-columns: 1fr; }
+    .bio-stat { border-right: none; border-bottom: 1px solid #eee; text-align: left; }
+    .values-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 28px; }
+
+    /* Ticker text smaller */
+    .ticker-item { font-size: 10px; padding: 0 20px; }
+    /* Mira section watermark too large on small screens */
+    .mira-section::before { font-size: 160px; }
+    /* UN section watermark */
+    .un-banner-left::before { font-size: 120px; }
+  }
+
+  /* ===== EXTRA MOBILE POLISH (all screens ≤ 768px) ===== */
+  @media (max-width: 768px) {
+    /* Prevent any section from causing horizontal scroll */
+    section, .hero, .footer { overflow-x: hidden; }
   }
 
   /* ===== UN SPOTLIGHT SECTION ===== */
@@ -1153,9 +1200,90 @@
     margin: 0;
   }
 
-  @media (max-width: 900px) {
-    .un-banner { grid-template-columns: 1fr; }
-    .un-banner-left, .un-banner-right { padding: 60px 36px; }
+  /* UN banner responsive handled in main media queries above */
+
+  /* ===== SECTION MOBILE OVERRIDES ===== */
+
+  /* --- UN Congress section --- */
+  @media (max-width: 768px) {
+    .un-banner { grid-template-columns: 1fr; min-height: auto; }
+    .un-banner-left { padding: 48px 24px; }
+    .un-banner-right { padding: 40px 24px; border-left: none; border-top: 4px solid var(--gold); }
+    .un-meta-row { gap: 10px; }
+    .un-meta-chip { font-size: 10px; padding: 6px 14px; }
+    .un-detail-list li { grid-template-columns: 70px 1fr; gap: 10px; }
+    .un-quote-block { padding: 20px 20px; }
+    .un-quote-block p { font-size: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .un-banner-left { padding: 36px 16px; }
+    .un-banner-right { padding: 32px 16px; }
+    .un-detail-list li { grid-template-columns: 1fr; gap: 2px; padding: 14px 0; }
+    .un-detail-label { padding-bottom: 2px; }
+    .un-detail-value { font-size: 15px; }
+    .un-eyebrow { gap: 10px; }
+    .un-seal { width: 44px; height: 44px; }
+  }
+
+  /* --- Blog & Writing section --- */
+  @media (max-width: 768px) {
+    .writing-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .writing-card { padding: 28px 20px !important; }
+  }
+  @media (max-width: 480px) {
+    #writing { padding: 48px 16px !important; }
+    .writing-card { padding: 22px 16px !important; }
+  }
+
+  /* --- Cert card base layout (moved out of inline style) --- */
+  .cert-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 32px;
+  }
+
+  /* --- Writing section base layout --- */
+  .writing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .writing-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 44px;
+  }
+
+  /* --- Certifications & Training section --- */
+  @media (max-width: 768px) {
+    #certifications { padding: 60px 20px !important; overflow-x: hidden; }
+    #writing { padding: 60px 20px !important; overflow-x: hidden; }
+    .cert-group-grid { grid-template-columns: 1fr !important; }
+
+    /* Group header: hide decorative lines, center label */
+    .cert-group-header { gap: 0 !important; justify-content: center !important; }
+    .cert-group-header > div[style*="height:1px"] { display: none !important; }
+    .cert-group-label { white-space: normal !important; text-align: center !important; }
+
+    /* Individual cert cards — CSS wins now that inline is gone */
+    .cert-card { padding: 18px; gap: 14px; width: 100%; box-sizing: border-box; overflow: hidden; }
+
+    /* Inner wrapper divs must not overflow the section */
+    .cert-group-wrap { width: 100%; max-width: 100% !important; box-sizing: border-box; }
+
+    /* Drive CTA row — stack vertically */
+    .cert-cta-row { flex-direction: column !important; align-items: stretch !important; gap: 16px !important; }
+    .cert-cta-row a { text-align: center !important; white-space: normal !important; width: 100% !important; box-sizing: border-box !important; }
+  }
+
+  @media (max-width: 480px) {
+    #certifications { padding: 48px 16px !important; }
+    .cert-card { padding: 14px; gap: 12px; flex-wrap: wrap; }
+    .cert-card > div:first-child { min-width: unset !important; width: 40px; height: 40px; font-size: 8px !important; }
   }
 
 </style>
@@ -1183,14 +1311,14 @@
   </div>
 
   <div class="hero-right">
-    <div class="badge">Entrepreneur · Media Coordinator · Political Science Student</div>
+    <div class="badge">Public Servant &amp; Civic Leader</div>
     <h1 class="hero-name">
       Camila A.<br/>
       <span>Chica Ortiz</span>
     </h1>
-    <p class="hero-title">Political Scientist · Entrepreneur · Author</p>
+    <p class="hero-title">Political Scientist · Author · Public Administrator</p>
     <p class="hero-tagline">
-      Committed to civic leadership, innovation, and international cooperation — bridging entrepreneurship, technology, and public service across borders.
+      Bridging nations, generations, and disciplines — always with a heart set on truth, justice, innovation, and service.
     </p>
     <div class="flags-row">
       <div class="flag-badge"><span class="flag-sym" style="font-size:13px;font-weight:800;color:var(--red);">USA</span> United States</div>
@@ -1267,7 +1395,7 @@
       <ul class="un-detail-list">
         <li>
           <span class="un-detail-label">Event</span>
-          <span class="un-detail-value"><strong>Congreso Internacional de Libertad Religiosa, Paz y Desarrollo</strong></span>
+          <span class="un-detail-value"><strong>International Congress on Religious Freedom, Peace and Development</strong></span>
         </li>
         <li>
           <span class="un-detail-label">Organizer</span>
@@ -1353,14 +1481,14 @@
       <div class="vol-card-header mira">
         <div class="vol-year">22</div>
         <h3 class="vol-org-name">MIRA Movement</h3>
-        <p class="vol-org-subtitle">Movimiento Independiente de Renovación Absoluta · Global Civic Movement</p>
+        <p class="vol-org-subtitle">Independent Movement of Absolute Renewal · Global Civic Movement</p>
       </div>
       <div class="vol-card-body">
         <p class="vol-role">Community Volunteer — MIRA Movement · 2022 to Present</p>
         <p class="vol-description">
-          Camila has engaged with the MIRA Movement since 2022, supporting its founding principles of absolute civic renewal, ethical politics, and the empowerment of Latino communities. She participated in the movement's "Escuela de Pensamiento" at Zion International University, co-authoring <em>Miraismo</em> — a work exploring the ethical and philosophical foundations of political service grounded in moral integrity, non-violence, and human dignity.
+          Camila has been involved with the MIRA Movement since 2022, supporting its founding principles of absolute renewal, ethical politics, and the empowerment of Latino communities. She participated in the movement's "School of Political Thought," co-authoring the book <em>Miraismo</em> — a testament to her intellectual and civic commitment to MIRA's vision of clean, non-violent, human-centered governance.
           <br/><br/>
-          These values — clean governance, the defense of human rights, and civic responsibility — align directly with Camila's own political convictions and her vision for conservative, principled leadership in the United States.
+          MIRA USA is the U.S. chapter of this global movement. Camila's engagement reflects her alignment with the movement's values, including transparency, civic education, and the unwavering defense of human rights.
         </p>
         <div class="vol-tags">
           <span class="vol-tag">Community Outreach</span>
@@ -1391,7 +1519,6 @@
           <span class="vol-tag">Republican Aligned</span>
         </div>
       </div>
-    </div>
 
     <div class="vol-card fade-up delay-3">
       <div class="vol-card-header" style="background: linear-gradient(135deg, #5a3a00 0%, #8B6914 100%);">
@@ -1429,7 +1556,7 @@
       Politics is not a career. It is a calling — a vocation of service to the community rooted in absolute moral integrity and love for humanity.
     </p>
     <p style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.9;font-family:'Cormorant Garamond',serif;font-size:18px;max-width:720px;margin:0 auto;" class="fade-up delay-2">
-      Camila A. Chica Ortiz is an active member of the MIRA Movement — a global civic movement originating in Colombia with presence in Switzerland and worldwide. MIRA (Movimiento Independiente de Renovación Absoluta) stands for the total renewal of political ethics: clean politics, human rights, non-violence, and public service as a moral duty. She was part of the Movimiento MIRA's "Escuela de Pensamiento," through which she co-authored the book <em>Miraismo</em>.
+      Camila A. Chica Ortiz is an active member of the MIRA Movement — a global civic movement originating in Colombia with presence in Switzerland and worldwide. MIRA (Independent Movement of Absolute Renewal) stands for the total renewal of political ethics: clean politics, human rights, non-violence, and public service as a moral duty. She was part of the Movimiento MIRA's "School of Political Thought," through which she co-authored the book <em>Miraismo</em>.
     </p>
     <div class="mira-pillars fade-up delay-3">
       <div class="mira-pillar">
@@ -1478,33 +1605,30 @@
       <div class="fade-up">
         <h3>From Medellín to the World</h3>
         <p>
-          Born on July 13, 1991, in Medellín, Colombia, Camila Andrea Chica Ortiz built her early academic foundation at the University of Antioquia, where she studied Political Science and developed a strong interest in democracy, human rights, and public policy. Her studies continued at Zion International University (ZIU-Online, Fort Lauderdale, FL), where she completed her degree in Political Science specializing in Public Administration and Freedom of Religion, graduating with a 92/100 GPA.
-        </p>
-        <p>
-          Her work in peacebuilding began in Colombia through the program "Promotor de Paz: Liderazgo de Cambio" organized by Madres de la Candelaria in Medellín — a community-based initiative focused on reconciliation and civic leadership. She also participated in historical memory initiatives led by the University of Antioquia and the Mayor's Office of Medellín, contributing to projects that documented peace-building processes and youth-led cultural initiatives in the city's communities.
+          Born on July 13, 1991 — the symbolic day of the writing of Colombia's Constitution — in Medellín, Camila A. Chica Ortiz's life has been defined by an extraordinary breadth of purpose. A prodigious learner, she graduated high school at 16 and secured first place in admissions at the University of Antioquia, one of Colombia's most competitive public universities, where she began her journey in Political Science. She went on to earn her degree in Political Science with a GPA of 92/100 at Zion International University (ZIU-Online, Fort Lauderdale, FL), specializing in Public Administration with a focus on Freedom of Religion.
         </p>
       </div>
 
       <div class="highlight-box fade-up delay-1">
         <p>
-          "An entrepreneur, media coordinator, and political science student committed to civic leadership, innovation, and international cooperation."
+          "She is building bridges between nations, generations, and disciplines — always with a heart set on truth, justice, innovation, and service."
         </p>
       </div>
 
       <div class="fade-up delay-2">
-        <h3>Entrepreneur, Technologist &amp; Media Coordinator</h3>
+        <h3>Scholar, Writer &amp; Political Analyst</h3>
         <p>
-          In 2019, Camila completed the Full Stack Web Development Coding Boot Camp at the University of Miami, expanding her professional profile into digital innovation and emerging technologies. The following year, she founded <strong>Aerospace Global Industry Supplies</strong> — an aviation company focused on aircraft listings and aviation parts marketing in international markets. She has also coordinated communication and development initiatives for three brands within Bitway International Business Group: Zion International University, Zion TV, and IM — with a focus on educational outreach, media strategy, and international collaboration.
+          Since moving to the United States in 2019, Camila has deepened her commitment to political science as both an academic and a practitioner. She continues her studies in Political Science at Zion International University (ZIU-Online, Fort Lauderdale) — specializing in Public Administration with a focus on Freedom of Religion — while actively publishing political analysis and commentary through her blog, <a href="https://politicalscienceusanotes.blogspot.com" target="_blank" style="color:var(--navy);font-weight:600;">Political Science's Studies</a>.
+        </p>
+        <p>
+          Her written work analyzes political events, public policy, and civic governance through the lens of ethics, human rights, and religious freedom — values that define her political outlook and intellectual mission.
         </p>
       </div>
 
       <div class="fade-up delay-3">
-        <h3>Published Author &amp; Global Advocate</h3>
+        <h3>Global Advocate &amp; Published Author</h3>
         <p>
-          Camila is the co-author of two published works. <em>Miraísmo</em>, produced through the Escuela de Pensamiento at Zion International University, examines the ethical and civic foundations of political renewal. <em>Procesos Artísticos y Culturales en la Comuna 1 de Medellín</em>, published in partnership with the University of Antioquia, was designed to showcase a series of community-led actions that contributed to conflict resolution in Medellín — documenting how cultural and artistic processes became instruments of peace in one of the city's most historically challenged neighborhoods.
-        </p>
-        <p>
-          In 2023, she participated in the International Congress on Religious Freedom, Peace, and Development in Geneva — organized by Zion International University and the International Institute for Religious Freedom — joining global participants in dialogue on human rights, religious liberty, and development. Her extensive training in public policy also includes the ILPES–CEPAL program on Multicriteria Evaluation in Public Investment (United Nations, 2024), as well as seminars on the Colombian peace process, historical memory, reconciliation, and political participation. A practicing Christian and active member of the Church of God Ministry of Jesus Christ International, she continues to pursue projects that connect innovation, civic participation, and international cooperation.
+          In 2023, Camila participated in the United Nations Congress on Freedom of Religion, Peace and Development in Geneva, Switzerland, joining prominent Colombian civic and spiritual leaders on a world stage. She co-authored <em>Miraismo</em> as part of the "School of Political Thought" at Zion International University — a work examining the ethical and civic foundations of political renewal. Separately, while leading research in Colombia, she authored a book on conflict resolution in Medellín (2016), grounded in her firsthand investigation of peace-building processes in the city. She also authored <em>Artistic and Cultural Processes en District 1 of Medellín</em>, published in partnership with the University of Antioquia.
         </p>
       </div>
     </div>
@@ -1523,14 +1647,14 @@
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">EDU</div>
       <div class="cred-text">
         <h4>Political Science — Public Administration &amp; Freedom of Religion</h4>
-        <p>Zion International University (ZIU) · Fort Lauderdale, FL · GPA 92/100 · 1st Place Admissions at U. de Antioquia</p>
+        <p>Zion International University (ZIU) · Fort Lauderdale, FL · GPA 92/100 · 1st Place Admissions at U. of Antioquia</p>
       </div>
     </div>
     <div class="cred-item fade-up delay-2">
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">BK</div>
       <div class="cred-text">
         <h4>Co-Author · <em>Miraismo</em></h4>
-        <p>Escuela de Pensamiento · Zion International University · Fort Lauderdale, FL</p>
+        <p>School of Political Thought · Zion International University · Fort Lauderdale, FL</p>
       </div>
     </div>
     <div class="cred-item fade-up delay-3">
@@ -1543,14 +1667,14 @@
     <div class="cred-item fade-up delay-4">
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">HUM</div>
       <div class="cred-text">
-        <h4>Diplomado en Derechos Humanos de las Mujeres</h4>
+        <h4>Certificate in Women's Human Rights</h4>
         <p>Zion International University · September 2024</p>
       </div>
     </div>
     <div class="cred-item fade-up delay-1">
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">POL</div>
       <div class="cred-text">
-        <h4>Evaluación Multicriterio — Inversión Pública</h4>
+        <h4>Multi-Criteria Evaluation — Public Investment</h4>
         <p>ILPES-CEPAL · United Nations · Santiago, Chile · June 2024</p>
       </div>
     </div>
@@ -1564,7 +1688,7 @@
     <div class="cred-item fade-up delay-3">
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">POL</div>
       <div class="cred-text">
-        <h4>1er Encuentro de Ciencias Políticas</h4>
+        <h4>1st Political Sciences Conference</h4>
         <p>Universidad Sergio Arboleda &amp; ZIU · Bogotá · December 2023</p>
       </div>
     </div>
@@ -1578,15 +1702,15 @@
     <div class="cred-item fade-up delay-1">
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">PAZ</div>
       <div class="cred-text">
-        <h4>Construcción y Mantenimiento de Paz</h4>
-        <p>CUN · Corporación Unificada Nacional · 2023</p>
+        <h4>Building and Sustaining Peace</h4>
+        <p>CUN · National Unified Corporation (CUN) · 2023</p>
       </div>
     </div>
     <div class="cred-item fade-up delay-2">
       <div class="cred-icon" style="font-family:'Montserrat',sans-serif;font-size:9px;font-weight:800;letter-spacing:1px;color:var(--gold);">RES</div>
       <div class="cred-text">
         <h4>Research Publication</h4>
-        <p>Procesos Artísticos y Culturales en la Comuna 1 de Medellín · U. de Antioquia</p>
+        <p>Artistic and Cultural Processes in District 1 of Medellín · U. of Antioquia</p>
       </div>
     </div>
   </div>
@@ -1599,9 +1723,9 @@
     <h2 class="section-title">Published <em>Thought</em></h2>
     <div class="divider"></div>
   </div>
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+  <div class="writing-grid" style="max-width:1100px;margin:0 auto">
     <!-- Blog card -->
-    <div class="fade-up delay-1" style="background:white;border:1px solid #e8e8e8;padding:44px;box-shadow:0 4px 30px rgba(0,0,0,0.05);display:flex;flex-direction:column;gap:20px;">
+    <div class="writing-card fade-up delay-1" style="background:white;border:1px solid #e8e8e8;box-shadow:0 4px 30px rgba(0,0,0,0.05)">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);font-weight:700;">Political Blog</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);line-height:1.2;">Political Science's Studies</h3>
       <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#555;line-height:1.8;">
@@ -1610,7 +1734,7 @@
       <a href="https://politicalscienceusanotes.blogspot.com" target="_blank" style="display:inline-block;background:var(--navy);color:white;padding:12px 28px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;width:fit-content;transition:all 0.3s ease;" onmouseover="this.style.background='var(--red)'" onmouseout="this.style.background='var(--navy)'">Read the Blog →</a>
     </div>
     <!-- Speech card -->
-    <div class="fade-up delay-2" style="background:linear-gradient(160deg,#002868 0%,#00174a 100%);border:1px solid rgba(255,255,255,0.1);padding:44px;display:flex;flex-direction:column;gap:20px;">
+    <div class="writing-card fade-up delay-2" style="background:linear-gradient(160deg,#002868 0%,#00174a 100%);border:1px solid rgba(255,255,255,0.1)">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;">Featured Speech · Most Inspiring</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:white;line-height:1.3;">Speech to the United Nations: Freedom of Religion, Peace &amp; Development</h3>
       <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(255,255,255,0.75);line-height:1.8;">
@@ -1637,89 +1761,89 @@
   </div>
 
   <!-- GROUP 1: Human Rights & Women -->
-  <div style="max-width:1200px;margin:0 auto 64px;">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;" class="fade-up">
+  <div class="cert-group-wrap" style="max-width:1200px;margin:0 auto 64px;">
+    <div class="cert-group-header fade-up" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
-      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Human Rights &amp; Women's Political Participation</span>
+      <span class="cert-group-label" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Human Rights &amp; Women's Political Participation</span>
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
-      <div class="fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+    <div class="cert-group-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
+      <div class="cert-card fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#006644,#009966);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">ZIU<br/>IDHLR</div>
         <div>
-          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Diplomado · 12 Weeks</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Derechos Humanos de las Mujeres y su Participación Política</h4>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Certificate Program · 12 Weeks</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Human Rights of Women and Their Political Participation</h4>
           <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Zion International University &amp; IDHLR · September 12, 2024</p>
         </div>
       </div>
-      <div class="fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+      <div class="cert-card fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#c47a00,#e8a000);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">MCC<br/>PAZ</div>
         <div>
           <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Community Leadership · 80 Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Promotor de Paz: Liderazgo de Cambio — Prevención, Promoción y Protección en Derechos Humanos</h4>
-          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Asociación Caminos de Esperanza, Madres de la Candelaria · Red Juvenil, Comuna 10<br/>Medellín, November 28, 2015</p>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Peace Promoter: Leadership for Change — Prevention, Promotion and Protection of Human Rights</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Caminos de Esperanza Association, Madres de la Candelaria · Youth Network, District 10<br/>Medellín, November 28, 2015</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- GROUP 2: Peace, Reconciliation & Historical Memory -->
-  <div style="max-width:1200px;margin:0 auto 64px;">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;" class="fade-up">
+  <div class="cert-group-wrap" style="max-width:1200px;margin:0 auto 64px;">
+    <div class="cert-group-header fade-up" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
-      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Peace, Reconciliation &amp; Historical Memory</span>
+      <span class="cert-group-label" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Peace, Reconciliation &amp; Historical Memory</span>
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
-      <div class="fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+    <div class="cert-group-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
+      <div class="cert-card fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#002868,#003a99);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">IEP<br/>UdA</div>
         <div>
           <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Research Project · 2013–2014</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Memoria Histórica: Promoción del Conocimiento e Identidades — Procesos Artísticos y Culturales, Comuna 1</h4>
-          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Universidad de Antioquia, IEP &amp; Alcaldía de Medellín · Secretaría de la Juventud<br/>Nov 20, 2013 – June 7, 2014</p>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Historical Memory: Promotion of Knowledge and Identities — Artistic and Cultural Processes, District 1</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">University of Antioquia, IEP &amp; City of Medellín · Youth Secretariat<br/>Nov 20, 2013 – June 7, 2014</p>
         </div>
       </div>
-      <div class="fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+      <div class="cert-card fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#1a6600,#2a9900);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">CUN<br/>PS</div>
         <div>
-          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Capacitación · 2 Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Memoria Histórica, Perdón y Reconciliación Internacional</h4>
-          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Corporación Unificada Nacional · Proyección Social · November 23, 2023 · Bogotá</p>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Training · 2 Hours</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Historical Memory, Forgiveness and International Reconciliation</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">National Unified Corporation (CUN) · Social Extension · November 23, 2023 · Bogotá</p>
         </div>
       </div>
-      <div class="fade-up delay-3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+      <div class="cert-card fade-up delay-3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#1a6600,#2a9900);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">CUN<br/>PS</div>
         <div>
-          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Capacitación · 2 Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Proceso de Paz en el Estado Colombiano</h4>
-          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Corporación Unificada Nacional · Proyección Social · March 20, 2024 · Bogotá</p>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Training · 2 Hours</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Peace Process in the Colombian State</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">National Unified Corporation (CUN) · Social Extension · March 20, 2024 · Bogotá</p>
         </div>
       </div>
-      <div class="fade-up delay-4" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+      <div class="cert-card fade-up delay-4" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#1a6600,#2a9900);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">CUN<br/>PS</div>
         <div>
           <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Conference · 2 Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Construcción y Mantenimiento de Paz en Colombia</h4>
-          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Corporación Unificada Nacional · Proyección Social · September 27, 2023 · Bogotá</p>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Building and Sustaining Peace in Colombia</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">National Unified Corporation (CUN) · Social Extension · September 27, 2023 · Bogotá</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- GROUP 3: Religious Freedom & International Affairs -->
-  <div style="max-width:1200px;margin:0 auto 64px;">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;" class="fade-up">
+  <div class="cert-group-wrap" style="max-width:1200px;margin:0 auto 64px;">
+    <div class="cert-group-header fade-up" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
-      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Religious Freedom &amp; International Affairs</span>
+      <span class="cert-group-label" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Religious Freedom &amp; International Affairs</span>
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
-      <div class="fade-up delay-1" style="background:rgba(0,40,104,0.35);border:1px solid rgba(201,168,76,0.3);padding:32px;display:flex;gap:20px;align-items:flex-start;position:relative;overflow:hidden;transition:border 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.7)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.3)'">
+    <div class="cert-group-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
+      <div class="cert-card fade-up delay-1" style="background:rgba(0,40,104,0.35);border:1px solid rgba(201,168,76,0.3);position:relative;overflow:hidden;transition:border 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.7)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.3)'">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--gold),var(--red));"></div>
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#002868,#003a99);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">ZIU<br/>IDHLR</div>
         <div>
           <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">★ International Congress · 3 Academic Credits · 16 Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Congreso Internacional de Libertad Religiosa, Paz y Desarrollo</h4>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">International Congress on Religious Freedom, Peace and Development</h4>
           <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Zion International University &amp; IDHLR · Geneva, Switzerland · September 15–16, 2023</p>
         </div>
       </div>
@@ -1727,42 +1851,85 @@
   </div>
 
   <!-- GROUP 4: Political Science & Public Administration -->
-  <div style="max-width:1200px;margin:0 auto 64px;">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;" class="fade-up">
+  <div class="cert-group-wrap" style="max-width:1200px;margin:0 auto 64px;">
+    <div class="cert-group-header fade-up" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
-      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Political Science &amp; Public Administration</span>
+      <span class="cert-group-label" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Political Science &amp; Public Administration</span>
       <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
-      <div class="fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+    <div class="cert-group-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
+      <div class="cert-card fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#003366,#004fa3);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.4;">ILPES<br/>CEPAL</div>
         <div>
           <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">UN Distance Course · 40 Academic Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Evaluación Multicriterio en la Inversión Pública</h4>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Multi-Criteria Evaluation in Public Investment</h4>
           <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">ILPES-CEPAL · United Nations, Santiago, Chile · May 13 – June 7, 2024</p>
         </div>
       </div>
-      <div class="fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+      <div class="cert-card fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#8B0000,#B22234);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">USA<br/>ZIU</div>
         <div>
           <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Academic Conference · 8 Hours · 3 Credits</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">1er Encuentro de Ciencias Políticas</h4>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">1st Political Sciences Conference</h4>
           <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Universidad Sergio Arboleda &amp; Zion International University · December 2, 2023 · Bogotá</p>
         </div>
       </div>
-      <div class="fade-up delay-3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border 0.3s,background 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+      <div class="cert-card fade-up delay-3" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
         <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#1a6600,#2a9900);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">CUN<br/>PS</div>
         <div>
-          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Capacitación · 2 Hours</div>
-          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Comunicación No Verbal y Lenguaje Corporal</h4>
-          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">Corporación Unificada Nacional · Proyección Social · November 18, 2023 · Bogotá</p>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Training · 2 Hours</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Non-Verbal Communication and Body Language</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">National Unified Corporation (CUN) · Social Extension · November 18, 2023 · Bogotá</p>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- GROUP 5: Community Development & Environment -->
+  <div class="cert-group-wrap" style="max-width:1200px;margin:0 auto 64px;">
+    <div class="cert-group-header fade-up" style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+      <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
+      <span class="cert-group-label" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;white-space:nowrap;">Community Development &amp; Environment</span>
+      <div style="height:1px;flex:1;background:rgba(255,255,255,0.1);"></div>
+    </div>
+    <div class="cert-group-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;">
+
+      <!-- Human Rights / CENSA -->
+      <div class="cert-card fade-up delay-1" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+        <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#7a0000,#b22234);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">CEN<br/>SA</div>
+        <div>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Certificate · 80 Hours</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Human Rights</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">CENSA · Medellín, Antioquia, Colombia · 2016</p>
+        </div>
+      </div>
+
+      <!-- Conflict Resolution / CENSA -->
+      <div class="cert-card fade-up delay-2" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);transition:border 0.3s,background 0.3s" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)';this.style.background='rgba(201,168,76,0.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.09)';this.style.background='rgba(255,255,255,0.04)'">
+        <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#7a0000,#b22234);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">CEN<br/>SA</div>
+        <div>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">Certificate · 32 Hours</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Conflict Resolution</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">CENSA · Medellín, Antioquia, Colombia · 2015</p>
+        </div>
+      </div>
+
+      <!-- Environment / FIMLM Geneva -->
+      <div class="cert-card fade-up delay-3" style="background:rgba(0,40,104,0.35);border:1px solid rgba(201,168,76,0.3);position:relative;overflow:hidden;transition:border 0.3s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.7)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.3)'">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--gold),var(--red));"></div>
+        <div style="min-width:50px;height:50px;background:linear-gradient(135deg,#1a4a00,#2a7a00);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;text-align:center;line-height:1.3;">FIM<br/>LM</div>
+        <div>
+          <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:7px;">★ International Certificate · 240 Hours</div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:16px;color:white;font-weight:700;margin-bottom:8px;line-height:1.3;">Environment</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.7;">FIMLM · Geneva, Switzerland · 2023</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Drive CTA -->
-  <div class="fade-up" style="max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:50px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+  <div class="cert-group-wrap cert-cta-row fade-up" style="max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:50px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;">
     <div>
       <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px;">Folder Updated Regularly</p>
       <p style="font-family:'Cormorant Garamond',serif;font-size:18px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:560px;">This credential portfolio continues to grow. All original documents are available for verification in the official public folder.</p>
@@ -1781,7 +1948,7 @@
         <div style="height:4px;width:24px;background:white;border-radius:2px;opacity:0.5;"></div>
         <div style="height:4px;width:24px;background:var(--navy);border-radius:2px;"></div>
       </div>
-      <p>Entrepreneur, media coordinator, and political science student. Born in Medellín, Colombia — committed to civic leadership, innovation, and international cooperation across technology, education, and public affairs.</p>
+      <p>Political Scientist, author, and civic advocate. A US citizen with roots in Colombia, committed to ethical governance, religious freedom, peace, and justice — at home and across borders.</p>
     </div>
     <div class="footer-col">
       <h4>Civic Roles &amp; Work</h4>
